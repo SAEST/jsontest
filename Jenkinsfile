@@ -34,7 +34,7 @@ pipeline {
                 //pytest_html_merger -i /var/jenkins_home/workspace/scjn/reports/pytestreport -o /var/jenkins_home/workspace/scjn/reports/pytestreport/report.html
                 sh """
                     . ${VENV_DIR}/bin/activate > /dev/null 2>&1
-                    python testjson.py 
+                    python jsoncron.py 
                """
                 }
             }
