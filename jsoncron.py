@@ -55,6 +55,6 @@ if __name__ == "__main__":
         indice_parametro += 1  # Avanzar al siguiente parámetro
 
         if indice_parametro < len(parametros):  # Esperar solo si hay más parámetros
-            time.sleep(300)  # Esperar 300 segundos (5 minutos)
+            time.sleep(10)  # Esperar 300 segundos (5 minutos)
 
     print("Se han utilizado todos los parámetros. El script ha terminado.")
