@@ -6,9 +6,6 @@ import datetime
 def actualizar_json(ruta_archivo, nuevo_parametro):
     """Actualiza el archivo JSON con el nuevo parámetro."""
     try:
-        datetime.datetime.now()
-        fecha_hora_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Formato: YYYY-MM-DD HH:MM
-        print(f"Fecha de inicio: {fecha_hora_str}")
         with open(ruta_archivo, 'r') as archivo:
             datos = json.load(archivo)
 
@@ -18,7 +15,7 @@ def actualizar_json(ruta_archivo, nuevo_parametro):
         with open(ruta_archivo, 'w') as archivo:
             json.dump(datos, archivo, indent=4)
 
-        print(f"Archivo JSON actualizado con: {nuevo_parametro} a las {fecha_hora_str}")
+        print(f"Archivo JSON actualizado con: {nuevo_parametro}")
     except FileNotFoundError:
         print(f"Error: Archivo no encontrado en {ruta_archivo}")
     except json.JSONDecodeError:
@@ -29,6 +26,10 @@ def actualizar_json(ruta_archivo, nuevo_parametro):
 if __name__ == "__main__":
     ruta_archivo = r"/var/jenkins_home/assets/configuracion.json"  # Reemplaza con tu ruta real
     nombre_archivo_log = "registro_actualizaciones.txt"
+
+    datetime.datetime.now()
+    fecha_hora_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Formato: YYYY-MM-DD HH:MM
+    print(f"Fecha de inicio: {fecha_hora_str}")
 
     # Lista de posibles parámetros (URLs, valores, etc.)
     parametros = [
@@ -57,4 +58,4 @@ if __name__ == "__main__":
         if indice_parametro < len(parametros):  # Esperar solo si hay más parámetros
             time.sleep(10)  # Esperar 300 segundos (5 minutos)
 
-    print("Se han utilizado todos los parámetros. El script ha terminado.")
+    print(f"Se han utilizado todos los parámetros. El script ha terminado a las {fecha_hora_str}")

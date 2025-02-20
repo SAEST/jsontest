@@ -17,7 +17,7 @@ def enviar_correo():
     build_number = os.getenv('BUILD_NUMBER', 'Desconocido')
     build_url = os.getenv('BUILD_URL', 'Desconocido')
     blue_ocean_url = f"{os.getenv('JENKINS_URL')}blue/organizations/jenkins/{build_name}/detail/{build_name}/{build_number}/pipeline"
-    log = f"{build_url}execution/node/3/ws/reports/registro_actualizaciones.txt"
+    log = f"{build_url}execution/node/3/ws/registro_actualizaciones.txt"
     url_dist = f"http://10.35.16.10:8086/publicacion/nacional/base-datos"
     url_json = f"http://10.35.16.10:8086/publicacion/nacional/assets/configuracion.json"
  
