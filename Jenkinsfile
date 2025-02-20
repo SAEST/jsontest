@@ -36,5 +36,30 @@ pipeline {
                 }
             }
         }
+        post {
+        always {
+            script {
+                def log = "${env.BUILD_URL}execution/node/3/ws/registro_actualizaciones.txt"
+
+                env.BUILD_RESULT = currentBuild.currentResult
+                // Convertir la duración a un formato legible
+                def durationMillis = currentBuild.duration
+                def durationSeconds = (durationMillis / 1000) as int
+                def minutes = (durationSeconds / 60) as int
+                def seconds = durationSeconds % 60
+                env.BUILD_DURATION = "${minutes}m ${seconds}s"
+
+                // Imprime las URLs en consola
+                echo "Archivo log: ${log}"
+                
+                archiveArtifacts artifacts: '/registro_actualizaciones.txt', allowEmptyArchive: true
+
+                sh """
+                    . ${VENV_DIR}/bin/activate > /dev/null 2>&1
+                    python3 utils/send_email.py ${env.BUILD_RESULT} ${env.BUILD_DURATION}
+                """
+            }
+        }
+    }
     }
 }
