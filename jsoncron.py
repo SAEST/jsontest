@@ -1,6 +1,7 @@
 import json
 import time
 import os
+import datetime 
 
 def actualizar_json(ruta_archivo, nuevo_parametro):
     """Actualiza el archivo JSON con el nuevo parámetro."""
@@ -14,7 +15,7 @@ def actualizar_json(ruta_archivo, nuevo_parametro):
         with open(ruta_archivo, 'w') as archivo:
             json.dump(datos, archivo, indent=4)
 
-        print(f"Archivo JSON actualizado con: {nuevo_parametro}")
+        print(f"Archivo JSON actualizado con: {nuevo_parametro} a las {fecha_hora_str}")
     except FileNotFoundError:
         print(f"Error: Archivo no encontrado en {ruta_archivo}")
     except json.JSONDecodeError:
@@ -29,6 +30,7 @@ if __name__ == "__main__":
     parametros = [
         "./assets/20250601_2000_COMPUTOS.zip",
         "./assets/20250601_2005_COMPUTOS.zip",
+        "./assets/20250601_2010_COMPUTOS.zip",
         # ... más parámetros
     ]
 
@@ -38,6 +40,10 @@ if __name__ == "__main__":
     while indice_parametro < len(parametros):
         nuevo_parametro = parametros[indice_parametro]
         actualizar_json(ruta_archivo, nuevo_parametro)
+
+        # Obtiene la fecha y hora actual
+        ahora = datetime.datetime.now()
+        fecha_hora_str = ahora.strftime("%Y-%m-%d %H:%M:%S") 
 
         indice_parametro += 1  # Avanzar al siguiente parámetro
 

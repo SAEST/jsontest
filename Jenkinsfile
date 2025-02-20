@@ -26,12 +26,9 @@ pipeline {
                 """
             }
         }
-        stage('Ejecutar Test con Pytest, Selenium - POM') {
+        stage('Ejecutar Script Actualizacion Json') {
             steps {
                 catchError(buildResult: 'SUCCESS', stageResult: 'FAILURE') {
-                // pytest tests/test_public_page.py --html=reports/pytestreport/report2.html --self-contained-html --alluredir=reports/report
-                //pytest tests/test_descarga_csv.py --html=reports/pytestreport/report1.html --self-contained-html --alluredir=reports/report
-                //pytest_html_merger -i /var/jenkins_home/workspace/scjn/reports/pytestreport -o /var/jenkins_home/workspace/scjn/reports/pytestreport/report.html
                 sh """
                     . ${VENV_DIR}/bin/activate > /dev/null 2>&1
                     python jsoncron.py 
