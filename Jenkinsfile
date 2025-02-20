@@ -53,7 +53,7 @@ pipeline {
                 // Imprime las URLs en consola
                 echo "Archivo log: ${log}"
                 
-                archiveArtifacts artifacts: '/registro_actualizaciones.txt', allowEmptyArchive: true
+                archiveArtifacts artifacts: 'registro_actualizaciones.txt', allowEmptyArchive: true
 
                 sh """
                     . ${VENV_DIR}/bin/activate > /dev/null 2>&1
