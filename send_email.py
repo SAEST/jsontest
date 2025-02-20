@@ -42,23 +42,14 @@ def enviar_correo():
                 <td style="padding: 8px; border: 1px solid #ddd;">Duración</td>
                 <td style="padding: 8px; border: 1px solid #ddd;">{build_duration}</td>
             </tr>
-            <tr>
-                <td style="padding: 8px; border: 1px solid #ddd;">Log</td>
-                <td style="padding: 8px; border: 1px solid #ddd;">{log}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border: 1px solid #ddd;">Front</td>
-                <td style="padding: 8px; border: 1px solid #ddd;">{url_dist}</td>
-            </tr>
-            <tr>
-                <td style="padding: 8px; border: 1px solid #ddd;">Json en front</td>
-                <td style="padding: 8px; border: 1px solid #ddd;">{url_json}</td>
-            </tr>
         </table>
         <p>Revisa más detalles, es necesario conexion VPN para redINE:</p>
         <p>Usuario: invitado Contraseña: DEST-QA</p>
         <a href="{blue_ocean_url}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #5bc0de; text-decoration: none;">Pipeline Blue Ocean</a>
         <a href="{build_url}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #5bc0de; text-decoration: none;">Pipeline Jenkins</a>
+        <a href="{log}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #5bc0de; text-decoration: none;">Log</a>
+        <a href="{url_dist}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #5bc0de; text-decoration: none;">URL Dist</a>
+        <a href="{url_json}" style="display: inline-block; padding: 10px 20px; color: #fff; background-color: #5bc0de; text-decoration: none;">URL Json</a>
         <p>Atentamente.<br>Equipo de QA - Automotion</p>
     """
 
