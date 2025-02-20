@@ -6,6 +6,9 @@ import datetime
 def actualizar_json(ruta_archivo, nuevo_parametro):
     """Actualiza el archivo JSON con el nuevo parámetro."""
     try:
+        datetime.datetime.now()
+        fecha_hora_str = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")  # Formato: YYYY-MM-DD HH:MM
+        print(f"Fecha de inicio: {fecha_hora_str}")
         with open(ruta_archivo, 'r') as archivo:
             datos = json.load(archivo)
 
@@ -25,6 +28,7 @@ def actualizar_json(ruta_archivo, nuevo_parametro):
 
 if __name__ == "__main__":
     ruta_archivo = r"/var/jenkins_home/assets/configuracion.json"  # Reemplaza con tu ruta real
+    nombre_archivo_log = "registro_actualizaciones.txt"
 
     # Lista de posibles parámetros (URLs, valores, etc.)
     parametros = [
@@ -44,6 +48,9 @@ if __name__ == "__main__":
         # Obtiene la fecha y hora actual
         ahora = datetime.datetime.now()
         fecha_hora_str = ahora.strftime("%Y-%m-%d %H:%M:%S") 
+        # Escribe la fecha y hora en el archivo de registro
+        with open(nombre_archivo_log, "a") as archivo_log:  # Abre el archivo en modo "append" (añadir)
+            archivo_log.write(f"Actualización realizada el: {fecha_hora_str} con el parametro: {nuevo_parametro}\n")  # Agrega un salto de línea
 
         indice_parametro += 1  # Avanzar al siguiente parámetro
 
